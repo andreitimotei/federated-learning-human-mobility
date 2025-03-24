@@ -1,0 +1,7 @@
+tensorflow==2.19.0
+flwr
+pandas
+numpy
+scikit-learn
+matplotlib
+lxml

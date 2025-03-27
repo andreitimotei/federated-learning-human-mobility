@@ -1,2 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+
+# Virtual environment
+venv/
+
+# Data files (raw and generated)
 data/*.csv
-data/*.csv
+!data/stations_geolocated.csv
+!data/sample_bike_trips.csv
+data/clients/*
+!data/clients/client_1190.csv
+!data/clients/client_1219.csv
+
+
+# Allow small client files only if needed
+# (you can uncomment the next line if you want to exclude them later)
+# data/clients/*.csv
+
+# Logs or temporary output
+*.log
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/

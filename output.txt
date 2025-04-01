@@ -1,0 +1,1256 @@
+2025-04-01 19:33:23.145513: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-04-01 19:33:23.146079: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-01 19:33:23.155029: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2025-04-01 19:33:23.163040: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1743532403.174938  212090 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1743532403.178450  212090 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1743532403.190065  212090 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1743532403.190126  212090 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1743532403.190130  212090 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1743532403.190132  212090 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2025-04-01 19:33:23.193392: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[93mWARNING [0m:   DEPRECATED FEATURE: flwr.simulation.start_simulation() is deprecated.
+	Instead, use the `flwr run` CLI command to start a local simulation in your Flower app, as shown for example below:
+
+		$ flwr new  # Create a new Flower app from a template
+
+		$ flwr run  # Run the Flower app in Simulation Mode
+
+	Using `start_simulation()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+        
+[92mINFO [0m:      Starting Flower simulation, config: num_rounds=5, no round_timeout
+2025-04-01 19:33:27,692	INFO worker.py:1771 -- Started a local Ray instance.
+[92mINFO [0m:      Flower VCE: Ray initialized with resources: {'accelerator_type:G': 1.0, 'node:__internal_head__': 1.0, 'CPU': 22.0, 'object_store_memory': 3198700339.0, 'memory': 6397400679.0, 'GPU': 1.0, 'node:192.168.52.78': 1.0}
+[92mINFO [0m:      Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[92mINFO [0m:      Flower VCE: Resources for each Virtual Client: {'num_cpus': 1}
+[92mINFO [0m:      Flower VCE: Creating VirtualClientEngineActorPool with 22 actors
+[92mINFO [0m:      [INIT]
+[92mINFO [0m:      Requesting initial parameters from one random client
+[36m(pid=213526)[0m 2025-04-01 19:33:30.008356: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[36m(pid=213526)[0m 2025-04-01 19:33:30.009269: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+[36m(pid=213526)[0m 2025-04-01 19:33:30.015221: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+[36m(pid=213526)[0m 2025-04-01 19:33:30.030671: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+[36m(pid=213526)[0m WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+[36m(pid=213526)[0m E0000 00:00:1743532410.051223  213526 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+[36m(pid=213526)[0m E0000 00:00:1743532410.055855  213526 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+[36m(pid=213526)[0m W0000 00:00:1743532410.072620  213526 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+[36m(pid=213526)[0m W0000 00:00:1743532410.072682  213526 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+[36m(pid=213526)[0m W0000 00:00:1743532410.072686  213526 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+[36m(pid=213526)[0m W0000 00:00:1743532410.072688  213526 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+[36m(pid=213526)[0m 2025-04-01 19:33:30.076918: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[36m(pid=213526)[0m To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[36m(ClientAppActor pid=213543)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m             This is a deprecated feature. It will be removed
+[36m(ClientAppActor pid=213543)[0m             entirely in future versions of Flower.
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213543)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+[36m(ClientAppActor pid=213543)[0m 2025-04-01 19:33:34.982354: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+[36m(pid=213528)[0m 2025-04-01 19:33:30.643540: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.[32m [repeated 21x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=213528)[0m 2025-04-01 19:33:30.651136: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.[32m [repeated 42x across cluster][0m
+[92mINFO [0m:      Received initial parameters from one random client
+[92mINFO [0m:      Starting evaluation of initial global parameters
+[92mINFO [0m:      Evaluation returned no results (`None`)
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 1]
+[92mINFO [0m:      configure_fit: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213543)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m             This is a deprecated feature. It will be removed
+[36m(ClientAppActor pid=213543)[0m             entirely in future versions of Flower.
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213543)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+[36m(pid=213528)[0m 2025-04-01 19:33:30.669317: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered[32m [repeated 21x across cluster][0m
+[36m(pid=213528)[0m WARNING: All log messages before absl::InitializeLog() is called are written to STDERR[32m [repeated 21x across cluster][0m
+[36m(pid=213528)[0m E0000 00:00:1743532410.701962  213528 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered[32m [repeated 21x across cluster][0m
+[36m(pid=213528)[0m E0000 00:00:1743532410.710649  213528 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered[32m [repeated 21x across cluster][0m
+[36m(pid=213528)[0m W0000 00:00:1743532410.742557  213528 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.[32m [repeated 84x across cluster][0m
+[36m(pid=213528)[0m 2025-04-01 19:33:30.756532: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.[32m [repeated 21x across cluster][0m
+[36m(pid=213528)[0m To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.[32m [repeated 21x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213531)[0m 
+[36m(ClientAppActor pid=213531)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213538)[0m 
+[36m(ClientAppActor pid=213538)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[92mINFO [0m:      aggregate_fit: received 20 results and 0 failures
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+[92mINFO [0m:      configure_evaluate: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213538)[0m 
+[36m(ClientAppActor pid=213538)[0m         
+[36m(ClientAppActor pid=213531)[0m 
+[36m(ClientAppActor pid=213531)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 20 results and 0 failures
+[93mWARNING [0m:   No evaluate_metrics_aggregation_fn provided
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 2]
+[92mINFO [0m:      configure_fit: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213532)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 40x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m             This is a deprecated feature. It will be removed[32m [repeated 40x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m             entirely in future versions of Flower.[32m [repeated 40x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.[32m [repeated 40x across cluster][0m
+[36m(ClientAppActor pid=213537)[0m 2025-04-01 19:33:35.874812: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected[32m [repeated 19x across cluster][0m
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213538)[0m 
+[36m(ClientAppActor pid=213538)[0m         
+[36m(ClientAppActor pid=213531)[0m 
+[36m(ClientAppActor pid=213531)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[92mINFO [0m:      aggregate_fit: received 19 results and 1 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213531)[0m 
+[36m(ClientAppActor pid=213531)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 19 results and 1 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 3]
+[92mINFO [0m:      configure_fit: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213531)[0m 
+[36m(ClientAppActor pid=213531)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[92mINFO [0m:      aggregate_fit: received 18 results and 2 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 20 clients (out of 20)
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213532)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 58x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m             This is a deprecated feature. It will be removed[32m [repeated 58x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m             entirely in future versions of Flower.[32m [repeated 58x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.[32m [repeated 58x across cluster][0m
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 18 results and 2 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 4]
+[92mINFO [0m:      configure_fit: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[92mINFO [0m:      aggregate_fit: received 18 results and 2 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: cd62da1565508f5df4c767e101000000, name=ClientAppActor.__init__, pid=213531, memory used=0.41GB) was running was 10.84GB / 11.40GB (0.950357), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-c741ee0ac108bc233548989feadc094fd4539d735c1d1593a8f1f464*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213534	0.41	ray::ClientAppActor.run
+213531	0.41	ray::ClientAppActor.run
+213543	0.41	ray::ClientAppActor.run
+213537	0.41	ray::ClientAppActor.run
+213528	0.41	ray::ClientAppActor.run
+213535	0.41	ray::ClientAppActor.run
+213524	0.41	ray::ClientAppActor.run
+213542	0.41	ray::ClientAppActor.run
+213526	0.41	ray::ClientAppActor.run
+213533	0.40	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[92mINFO [0m:      aggregate_evaluate: received 18 results and 2 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [ROUND 5]
+[92mINFO [0m:      configure_fit: strategy sampled 20 clients (out of 20)
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: bce92f1b49813392cdc994e201000000, name=ClientAppActor.__init__, pid=213538, memory used=0.38GB) was running was 10.84GB / 11.40GB (0.951019), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-a04244e48b55fa1f30b79315cd81f5a7d6812413acc1c2f2d6304d28*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213538	0.38	ray::ClientAppActor.run
+213540	0.38	ray::ClientAppActor.run
+213541	0.38	ray::ClientAppActor.run
+213543	0.38	ray::ClientAppActor.run
+213528	0.38	ray::ClientAppActor.run
+213532	0.38	ray::ClientAppActor.run
+213526	0.38	ray::ClientAppActor.run
+213534	0.38	ray::ClientAppActor.run
+213542	0.38	ray::ClientAppActor.run
+213527	0.37	ray::ClientAppActor.run
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213533)[0m 
+[36m(ClientAppActor pid=213533)[0m         
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[92mINFO [0m:      aggregate_fit: received 18 results and 2 failures
+[92mINFO [0m:      configure_evaluate: strategy sampled 20 clients (out of 20)
+[36m(ClientAppActor pid=213530)[0m 
+[36m(ClientAppActor pid=213530)[0m         
+[36m(ClientAppActor pid=213530)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 72x across cluster][0m
+[36m(ClientAppActor pid=213530)[0m             This is a deprecated feature. It will be removed[32m [repeated 72x across cluster][0m
+[36m(ClientAppActor pid=213530)[0m             entirely in future versions of Flower.[32m [repeated 72x across cluster][0m
+[36m(ClientAppActor pid=213530)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.[32m [repeated 72x across cluster][0m
+[36m(ClientAppActor pid=213543)[0m 
+[36m(ClientAppActor pid=213543)[0m         
+[36m(ClientAppActor pid=213524)[0m 
+[36m(ClientAppActor pid=213524)[0m         
+[36m(ClientAppActor pid=213536)[0m 
+[36m(ClientAppActor pid=213536)[0m         
+[36m(ClientAppActor pid=213542)[0m 
+[36m(ClientAppActor pid=213542)[0m         
+[36m(ClientAppActor pid=213534)[0m 
+[36m(ClientAppActor pid=213534)[0m         
+[36m(ClientAppActor pid=213532)[0m 
+[36m(ClientAppActor pid=213532)[0m         
+[36m(ClientAppActor pid=213529)[0m 
+[36m(ClientAppActor pid=213529)[0m         
+[36m(ClientAppActor pid=213537)[0m 
+[36m(ClientAppActor pid=213537)[0m         
+[36m(ClientAppActor pid=213535)[0m 
+[36m(ClientAppActor pid=213535)[0m         
+[36m(ClientAppActor pid=213528)[0m 
+[36m(ClientAppActor pid=213528)[0m         
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_client_proxy.py", line 95, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 401, in get_client_result
+    return self._fetch_future_result(cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/flwr/simulation/ray_transport/ray_actor.py", line 282, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+                                         ^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 2639, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/timotei/venv/lib/python3.12/site-packages/ray/_private/worker.py", line 866, in get_objects
+    raise value
+ray.exceptions.OutOfMemoryError: Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+
+[91mERROR [0m:     Task was killed due to the node running low on memory.
+Memory on the node (IP: 192.168.52.78, ID: 288617398dc28bc0aff1ee56b563226d196f0971145c9bcd4532bb68) where the task (actor ID: d34014d1ed34621ce6f4ce4901000000, name=ClientAppActor.__init__, pid=213533, memory used=0.43GB) was running was 10.84GB / 11.40GB (0.950877), which exceeds the memory usage threshold of 0.95. Ray killed this worker (ID: fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58) because it was the most recently scheduled task; to see more information about memory usage on this node, use `ray logs raylet.out -ip 192.168.52.78`. To see the logs of the worker, use `ray logs worker-fc41327352e1abbed76790c2e80102356a3af5e7b83180f070bb8e58*out -ip 192.168.52.78. Top 10 memory users:
+PID	MEM(GB)	COMMAND
+213530	0.43	ray::ClientAppActor
+213533	0.43	ray::ClientAppActor
+213542	0.43	ray::ClientAppActor
+213540	0.43	ray::ClientAppActor
+213541	0.43	ray::ClientAppActor
+213532	0.43	ray::ClientAppActor
+213537	0.42	ray::ClientAppActor
+213536	0.42	ray::ClientAppActor
+213528	0.42	ray::ClientAppActor
+213535	0.42	ray::ClientAppActor
+Refer to the documentation on how to address the out of memory issue: https://docs.ray.io/en/latest/ray-core/scheduling/ray-oom-prevention.html. Consider provisioning more memory on this node or reducing task parallelism by requesting more CPUs per task. Set max_restarts and max_task_retries to enable retry when the task crashes due to OOM. To adjust the kill threshold, set the environment variable `RAY_memory_usage_threshold` when starting Ray. To disable worker killing, set the environment variable `RAY_memory_monitor_refresh_ms` to zero.
+[36m(ClientAppActor pid=213526)[0m 
+[36m(ClientAppActor pid=213526)[0m         
+[36m(ClientAppActor pid=213525)[0m 
+[36m(ClientAppActor pid=213525)[0m         
+[36m(ClientAppActor pid=213539)[0m 
+[36m(ClientAppActor pid=213539)[0m         
+[36m(ClientAppActor pid=213540)[0m 
+[36m(ClientAppActor pid=213540)[0m         
+[36m(ClientAppActor pid=213541)[0m 
+[36m(ClientAppActor pid=213541)[0m         
+[36m(ClientAppActor pid=213527)[0m 
+[36m(ClientAppActor pid=213527)[0m         
+[92mINFO [0m:      aggregate_evaluate: received 17 results and 3 failures
+[92mINFO [0m:      
+[92mINFO [0m:      [SUMMARY]
+[92mINFO [0m:      Run finished 5 round(s) in 19.18s
+[92mINFO [0m:      	History (loss, distributed):
+[92mINFO [0m:      		round 1: 26803.874549235323
+[92mINFO [0m:      		round 2: 27459.67524399602
+[92mINFO [0m:      		round 3: 27600.958530100816
+[92mINFO [0m:      		round 4: 29535.678756488673
+[92mINFO [0m:      		round 5: 28074.566846530375
+[92mINFO [0m:      
+[36m(ClientAppActor pid=213529)[0m [CLIENT] Eval loss=452.0479, MAE=443.7179, Acc=6.6806
+[36m(ClientAppActor pid=213536)[0m [CLIENT] Eval loss=4897.7690, MAE=7083.1250, Acc=6.6541[32m [repeated 39x across cluster][0m
+[36m(ClientAppActor pid=213532)[0m [CLIENT] Eval loss=436.9796, MAE=428.7425, Acc=6.6119[32m [repeated 36x across cluster][0m
+[36m(ClientAppActor pid=213527)[0m [93mWARNING [0m:   DEPRECATED FEATURE: `client_fn` now expects a signature `def client_fn(context: Context)`.The provided `client_fn` has signature: {'cid': <Parameter "cid: str">}. You can import the `Context` like this: `from flwr.common import Context`[32m [repeated 16x across cluster][0m
+[36m(ClientAppActor pid=213527)[0m             This is a deprecated feature. It will be removed[32m [repeated 16x across cluster][0m
+[36m(ClientAppActor pid=213527)[0m             entirely in future versions of Flower.[32m [repeated 16x across cluster][0m
+[36m(ClientAppActor pid=213527)[0m [93mWARNING [0m:   Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.[32m [repeated 16x across cluster][0m
+[36m(ClientAppActor pid=213528)[0m [CLIENT] Eval loss=3051.1406, MAE=3007.9587, Acc=6.5811[32m [repeated 16x across cluster][0m

@@ -1,8 +1,17 @@
 import pandas as pd
 import os
+import json
 
 def split_into_clients(input_csv, output_folder, min_samples=100):
     df = pd.read_csv(input_csv)
+
+    # Load station index mapping
+    with open("data/station_mapping.json", "r") as f:
+        station_to_index = json.load(f)
+
+    # Create proper columns for training
+    df["duration"] = df["Trip_duration_minutes"]
+    df["destination"] = df["End station number"].astype(str).map(station_to_index)
 
     # Ensure output folder exists
     os.makedirs(output_folder, exist_ok=True)
@@ -13,7 +22,7 @@ def split_into_clients(input_csv, output_folder, min_samples=100):
     client_count = 0
     for station_id, group in grouped:
         if len(group) < min_samples:
-            continue  # Skip stations with too few samples
+            continue
 
         client_filename = f"client_{station_id}.csv"
         group.to_csv(os.path.join(output_folder, client_filename), index=False)

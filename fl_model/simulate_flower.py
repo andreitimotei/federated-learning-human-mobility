@@ -5,6 +5,7 @@ from client import FederatedClient
 import json
 from flwr.common import ndarrays_to_parameters, Parameters
 import numpy as np
+from flwr.common import Context
 
 # --- Load available client file paths ---
 def get_client_paths(folder, limit=None):
@@ -47,14 +48,15 @@ class FlowerClientManager(fl.client.NumPyClient):
 # --- Simulation Entry Point ---
 if __name__ == "__main__":
     data_folder = "data/clients"
-    client_paths = get_client_paths(data_folder, limit=20)
+    client_paths = get_client_paths(data_folder, limit=30)
 
-    def client_fn(cid: str) -> fl.client.Client:
-        return FlowerClientManager(cid, client_paths)
+    def client_fn(context: Context) -> fl.client.Client:
+        return FlowerClientManager(context.run_id, client_paths)
 
     fl.simulation.start_simulation(
         client_fn=client_fn,
         num_clients=len(client_paths),
-        config=fl.server.ServerConfig(num_rounds=5),
-        client_resources={"num_cpus": 1}
+        config=fl.server.ServerConfig(num_rounds=10),
+        client_resources={"num_cpus": 1},
+        ray_init_args={"num_cpus": 8}
     )

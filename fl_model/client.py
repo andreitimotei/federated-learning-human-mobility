@@ -6,6 +6,17 @@ from sklearn.model_selection import train_test_split
 from model import create_model
 
 import json
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+
+physical_gpus = tf.config.list_physical_devices('GPU') 
+if physical_gpus: 
+    try: 
+        for gpu in physical_gpus: 
+            tf.config.experimental.set_memory_growth(gpu, True) 
+            print("Memory growth enabled on GPUs") 
+    except RuntimeError as e: 
+            print(e)
 
 # Load station label mapping
 with open("data/station_mapping.json", "r") as f:

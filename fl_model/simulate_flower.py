@@ -48,7 +48,7 @@ class FlowerClientManager(fl.client.NumPyClient):
 # --- Simulation Entry Point ---
 if __name__ == "__main__":
     data_folder = "data/clients"
-    client_paths = get_client_paths(data_folder, limit=30)
+    client_paths = get_client_paths(data_folder, limit=20)
 
     def client_fn(context: Context) -> fl.client.Client:
         return FlowerClientManager(context.run_id, client_paths)

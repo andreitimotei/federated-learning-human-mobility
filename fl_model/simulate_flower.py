@@ -7,6 +7,10 @@ from flwr.common import ndarrays_to_parameters, Parameters
 import numpy as np
 from flwr.common import Context
 
+import os
+os.environ["RAY_memory_usage_threshold"] = "0.99"
+os.environ["RAY_memory_monitor_refresh_ms"] = "100"
+
 # --- Load available client file paths ---
 def get_client_paths(folder, limit=None):
     files = [f for f in os.listdir(folder) if f.startswith("client_") and f.endswith(".csv")]
@@ -48,15 +52,15 @@ class FlowerClientManager(fl.client.NumPyClient):
 # --- Simulation Entry Point ---
 if __name__ == "__main__":
     data_folder = "data/clients"
-    client_paths = get_client_paths(data_folder, limit=20)
+    client_paths = get_client_paths(data_folder, limit=10)
 
     def client_fn(context: Context) -> fl.client.Client:
-        return FlowerClientManager(context.run_id, client_paths)
+        return FlowerClientManager(context.run_id, client_paths).to_client()
 
     fl.simulation.start_simulation(
         client_fn=client_fn,
         num_clients=len(client_paths),
-        config=fl.server.ServerConfig(num_rounds=10),
+        config=fl.server.ServerConfig(num_rounds=20),
         client_resources={"num_cpus": 1},
-        ray_init_args={"num_cpus": 8}
+        ray_init_args={"num_cpus": 4}
     )

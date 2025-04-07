@@ -3,7 +3,7 @@ import tensorflow as tf
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from model import create_model
+from model import create_model, create_model_2
 
 import json
 import os
@@ -48,7 +48,7 @@ class FederatedClient(fl.client.NumPyClient):
         self.y_dur_train, self.y_dur_val = y_dur_train.values, y_dur_val.values
         self.y_dest_train, self.y_dest_val = y_dest_train.values, y_dest_val.values
 
-        self.model = create_model(input_shape=(self.X_train.shape[1],), num_stations=num_stations)
+        self.model = create_model_2(input_shape=(self.X_train.shape[1],), num_stations=num_stations)
 
     def get_parameters(self, config):
         return self.model.get_weights()
@@ -69,8 +69,9 @@ class FederatedClient(fl.client.NumPyClient):
             {"duration": self.y_dur_val, "destination": self.y_dest_val},
             verbose=0
         )
-        print(f"[CLIENT] Eval loss={results[0]:.4f}, MAE={results[1]:.4f}, Acc={results[2]:.4f}")
-        return results[0], len(self.X_val), {"mae": results[1], "accuracy": results[2]}
+        print("Full evaluation results:", results)
+        print(f"[CLIENT] Duration MAE = {results[3]:.4f}, Destination Accuracy = {results[4]:.4f}")
+        return results[0], len(self.X_val), {"mae": results[3], "accuracy": results[4]}
 
 
 # --- Entry point to run this client individually (for testing only) ---

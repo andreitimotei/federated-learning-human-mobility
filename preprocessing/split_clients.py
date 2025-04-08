@@ -31,6 +31,6 @@ def split_into_clients(input_csv, output_folder, min_samples=100):
     print(f"[✓] Saved {client_count} client datasets to {output_folder}")
 
 if __name__ == "__main__":
-    input_path = "data/bike_features.csv"
+    input_path = "data/bike_features_filtered_percentile.csv"
     output_folder = "data/clients"
     split_into_clients(input_path, output_folder)

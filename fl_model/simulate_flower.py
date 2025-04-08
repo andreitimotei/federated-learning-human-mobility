@@ -60,7 +60,7 @@ if __name__ == "__main__":
     fl.simulation.start_simulation(
         client_fn=client_fn,
         num_clients=len(client_paths),
-        config=fl.server.ServerConfig(num_rounds=20),
+        config=fl.server.ServerConfig(num_rounds=10),
         client_resources={"num_cpus": 1},
         ray_init_args={"num_cpus": 4}
     )

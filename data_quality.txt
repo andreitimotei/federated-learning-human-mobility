@@ -1,0 +1,74 @@
+
+Dataframe head:
+       Number           Start date  ...   End_lon  Trip_distance_km
+0  132825189  2023-08-01 00:00:00  ... -0.122807          0.455564
+1  132825190  2023-08-01 00:00:00  ... -0.122807          0.455564
+2  132825191  2023-08-01 00:00:00  ... -0.088543          3.174147
+3  132825192  2023-08-01 00:01:00  ... -0.142207          2.769760
+4  132825193  2023-08-01 00:01:00  ... -0.120903          1.420446
+
+[5 rows x 17 columns]
+
+Dataframe describe:
+              Number     Start_hour  ...        End_lon  Trip_distance_km
+count  7.765270e+05  776527.000000  ...  776527.000000     776527.000000
+mean   1.332250e+08      14.020164  ...      -0.124576          2.338750
+std    2.307174e+05       5.000613  ...       0.050922          1.732806
+min    1.328252e+08       0.000000  ...      -0.236770          0.000000
+25%    1.330252e+08      10.000000  ...      -0.163042          1.105606
+50%    1.332248e+08      15.000000  ...      -0.124826          1.960580
+75%    1.334248e+08      18.000000  ...      -0.088533          3.172986
+max    1.336251e+08      23.000000  ...      -0.002275         17.131171
+
+[8 rows x 12 columns]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 776527 entries, 0 to 776526
+Data columns (total 17 columns):
+ #   Column                 Non-Null Count   Dtype  
+---  ------                 --------------   -----  
+ 0   Number                 776527 non-null  int64  
+ 1   Start date             776527 non-null  object 
+ 2   End date               776527 non-null  object 
+ 3   Start_hour             776527 non-null  int64  
+ 4   Start_dayofweek        776527 non-null  int64  
+ 5   Start station number   776527 non-null  int64  
+ 6   Start station          776527 non-null  object 
+ 7   End station number     776527 non-null  int64  
+ 8   End station            776527 non-null  object 
+ 9   Bike number            776527 non-null  int64  
+ 10  Bike model             776527 non-null  object 
+ 11  Trip_duration_minutes  776527 non-null  float64
+ 12  Start_lat              776527 non-null  float64
+ 13  Start_lon              776527 non-null  float64
+ 14  End_lat                776527 non-null  float64
+ 15  End_lon                776527 non-null  float64
+ 16  Trip_distance_km       776527 non-null  float64
+dtypes: float64(6), int64(6), object(5)
+memory usage: 100.7+ MB
+
+Dataframe info:
+ None
+
+Dataframe shape: (776527, 17)
+
+Missing values:
+ Number                   0
+Start date               0
+End date                 0
+Start_hour               0
+Start_dayofweek          0
+Start station number     0
+Start station            0
+End station number       0
+End station              0
+Bike number              0
+Bike model               0
+Trip_duration_minutes    0
+Start_lat                0
+Start_lon                0
+End_lat                  0
+End_lon                  0
+Trip_distance_km         0
+dtype: int64
+
+✅ Done. Check generated PNGs for distribution plots.

@@ -3,9 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def inspect_client_data(client_data_path):
-    print(f"\nInspecting client data at: {client_data_path}")
-    df = pd.read_csv(client_data_path)
+def inspect_client_data():
+
+    df = pd.read_csv("data/bike_features.csv")
+
+
+    print("\nDataframe head:\n", df.head())
+    print("\nDataframe describe:\n", df.describe())
+    print("\nDataframe info:\n", df.info())
 
     print("\nDataframe shape:", df.shape)
     print("\nMissing values:\n", df.isnull().sum())
@@ -36,11 +41,7 @@ def inspect_client_data(client_data_path):
         plt.close()
 
 if __name__ == "__main__":
-    data_folder = "data/clients"
-    client_files = sorted([os.path.join(data_folder, f) for f in os.listdir(data_folder) if f.startswith("client_") and f.endswith(".csv")])
 
-    # Only inspect the first 3 clients for now
-    for path in client_files[:3]:
-        inspect_client_data(path)
+    inspect_client_data()
 
     print("\n✅ Done. Check generated PNGs for distribution plots.")

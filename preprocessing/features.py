@@ -25,8 +25,7 @@ def engineer_features(input_csv, output_csv):
     df["Start_dayofweek"] = df["Start date"].dt.dayofweek  # Monday=0
 
     # Compute trip duration in minutes if not already available
-    if "Trip_duration_minutes" not in df.columns:
-        df["Trip_duration_minutes"] = (df["End date"] - df["Start date"]).dt.total_seconds() / 60
+    df["Trip_duration_minutes"] = (df["End date"] - df["Start date"]).dt.total_seconds() / 60
 
     # Rename latitude and longitude columns for clarity if needed
     # (Assuming the merged file already has Start_lat, Start_lon from merge_geodata.py)

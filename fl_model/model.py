@@ -141,7 +141,7 @@ def create_model_complex(input_shape):
 
 
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        optimizer=tf.keras.optimizers.AdamW(learning_rate=0.001),
         loss={
             "duration": "mse",
             "lat": "mse",

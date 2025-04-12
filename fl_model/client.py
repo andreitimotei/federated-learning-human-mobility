@@ -55,7 +55,7 @@ class FederatedClient(fl.client.NumPyClient):
         self.model.fit(
             self.X_train,
             {"duration": self.y_dur_train, "lat": self.y_lat_train, "lon": self.y_lon_train},
-            epochs=1, batch_size=32, verbose=0
+            epochs=10, batch_size=32, verbose=0
         )
         return self.model.get_weights(), len(self.X_train), {}
 

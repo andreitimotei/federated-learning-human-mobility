@@ -52,7 +52,7 @@ def engineer_features(input_csv, output_csv):
 
     # Optionally, select a subset of useful columns
     cols_to_keep = [
-        "Number", "Start date", "End date", "Start_date", "End_date",
+        "Number", "Start_date", "End_date",
         "Start_hour", "Start_dayofweek", "End_hour", "End_dayofweek",
         "Start station number", "Start station",
         "End station number", "End station",
@@ -60,6 +60,13 @@ def engineer_features(input_csv, output_csv):
         "Trip_duration_minutes",
         "Start_lat", "Start_lon"
     ]
+
+    from sklearn.preprocessing import StandardScaler
+
+    feature_cols = ["Start_date", "End_date", "Start_hour", "Start_dayofweek", "End_hour", "End_dayofweek", "Start_lat", "Start_lon", "Trip_distance_km"]
+    scaler = StandardScaler()
+    df[feature_cols] = scaler.fit_transform(df[feature_cols])
+
     # If available, include end station coordinates and trip distance
     if "End_lat" in df.columns and "End_lon" in df.columns:
         cols_to_keep += ["End_lat", "End_lon", "Trip_distance_km"]

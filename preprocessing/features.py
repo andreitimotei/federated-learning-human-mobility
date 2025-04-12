@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 import math
 
 def haversine(lat1, lon1, lat2, lon2): 
@@ -24,8 +24,17 @@ def engineer_features(input_csv, output_csv):
     df["Start_hour"] = df["Start date"].dt.hour
     df["Start_dayofweek"] = df["Start date"].dt.dayofweek  # Monday=0
 
+    # Extract features: hour of day and day of week
+    df["End_hour"] = df["End date"].dt.hour
+    df["End_dayofweek"] = df["End date"].dt.dayofweek  # Monday=0
+
+
     # Compute trip duration in minutes if not already available
     df["Trip_duration_minutes"] = (df["End date"] - df["Start date"]).dt.total_seconds() / 60
+
+    # Convert dates to datetime objects
+    df["Start_date"] = pd.to_datetime(df["Start date"]).astype(np.int64) // 10**9  # Convert to Unix timestamp in seconds
+    df["End_date"] = pd.to_datetime(df["End date"]).astype(np.int64) // 10**9  # Convert to Unix timestamp in seconds
 
     # Rename latitude and longitude columns for clarity if needed
     # (Assuming the merged file already has Start_lat, Start_lon from merge_geodata.py)
@@ -43,7 +52,8 @@ def engineer_features(input_csv, output_csv):
 
     # Optionally, select a subset of useful columns
     cols_to_keep = [
-        "Number", "Start date", "End date", "Start_hour", "Start_dayofweek",
+        "Number", "Start date", "End date", "Start_date", "End_date",
+        "Start_hour", "Start_dayofweek", "End_hour", "End_dayofweek",
         "Start station number", "Start station",
         "End station number", "End station",
         "Bike number", "Bike model",

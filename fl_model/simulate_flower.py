@@ -4,6 +4,9 @@ import random
 from client import FederatedClient
 from flwr.common import Context
 from flwr.server.strategy import FedAvg  # Import the FedAvg strategy
+import numpy as np
+from flwr.common import ndarrays_to_parameters
+from model import create_model_complex
 
 os.environ["RAY_memory_usage_threshold"] = "0.99"
 os.environ["RAY_memory_monitor_refresh_ms"] = "100"
@@ -44,16 +47,33 @@ class FlowerClientManager(fl.client.NumPyClient):
 # --- Simulation Entry Point ---
 if __name__ == "__main__":
     data_folder = "data/clients"
-    client_paths = get_client_paths(data_folder, limit=10)
+    client_paths = get_client_paths(data_folder, limit=5)
 
     def client_fn(context: Context) -> fl.client.Client:
         # Create the client using the updated manager that randomly selects a CSV each time
         return FlowerClientManager(client_paths).to_client()
+    
+    from flwr.server.strategy import FedOpt
+
+    # Replace this with the actual structure of your model's weights
+    model = create_model_complex(input_shape=(8,))  # Adjust input shape as needed
+    initial_weights = model.get_weights()  # Get the actual weights from the model
+    initial_parameters = ndarrays_to_parameters(initial_weights)
+
+    strategy = FedOpt(
+        initial_parameters=initial_parameters,
+        min_fit_clients=5,
+        min_available_clients=5,
+        eta=0.01,  # Server learning rate
+        eta_l=0.1,  # Client learning rate
+        tau=0.9,  # Momentum parameter
+    )
 
     fl.simulation.start_simulation(
         client_fn=client_fn,
         num_clients=len(client_paths),
-        config=fl.server.ServerConfig(num_rounds=20),
-        client_resources={"num_cpus": 6},
-        ray_init_args={"num_cpus": 12}
+        config=fl.server.ServerConfig(num_rounds=25),
+        client_resources={"num_cpus": 6, "num_gpus": 1},
+        ray_init_args={"num_cpus": 12, "num_gpus": 1},
+        strategy=strategy,
     )

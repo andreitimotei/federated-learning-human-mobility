@@ -119,12 +119,6 @@ def create_model_complex(input_shape):
     x = layers.LeakyReLU()(x)
     x = layers.Dropout(0.35)(x)
 
-    # Duration branch remains the same (using MSE)
-    duration_branch = layers.Dense(128)(x)
-    duration_branch = layers.BatchNormalization()(duration_branch)
-    duration_branch = layers.LeakyReLU()(duration_branch)
-    duration_output = layers.Dense(1, name="duration")(duration_branch)
-
     # Branch for predicting end latitude
     lat_branch = layers.Dense(128)(x)
     lat_branch = layers.BatchNormalization()(lat_branch)
@@ -137,22 +131,20 @@ def create_model_complex(input_shape):
     lon_branch = layers.LeakyReLU()(lon_branch)
     lon_output = layers.Dense(1, name="lon")(lon_branch)
 
-    model = models.Model(inputs=inputs, outputs=[duration_output, lat_output, lon_output])
+    model = models.Model(inputs=inputs, outputs=[lat_output, lon_output])
 
 
     model.compile(
         optimizer=tf.keras.optimizers.AdamW(learning_rate=0.001),
         loss={
-            "duration": "mse",
             "lat": "mse",
             "lon": "mse"
         },
         metrics={
-            "duration": ["mae"],
             "lat": ["mae"],
             "lon": ["mae"]
         },
-        loss_weights={"duration": 0.33, "lat": 0.33, "lon": 0.33}  # adjust as needed
+        loss_weights={"lat": 0.5, "lon": 0.5}  # adjust as needed
     )
 
     return model

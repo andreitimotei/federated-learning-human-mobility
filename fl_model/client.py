@@ -24,15 +24,12 @@ def load_client_data(path):
     # Drop rows with NaN values across all relevant columns
     df = df.dropna(subset=[
         "Start_date", "End_date", "Start_dayofweek", "End_dayofweek",
-        "Start_lat", "Start_lon", "Trip_distance_km", "Trip_duration_minutes",
+        "Start_lat", "Start_lon", "Trip_distance_m", "Trip_duration_ms", "Trip_duration_minutes",
         "Bike number", "Bike model", "End_lat", "End_lon"
     ])
 
     # Use the same input features (you can also include additional features)
-    X = df[[
-        "Start_date", "End_date", "Start_dayofweek", "End_dayofweek",
-        "Start_lat", "Start_lon", "Trip_distance_km", "Trip_duration_minutes"
-    ]]
+    X = df[["Start_date", "Start_dayofweek", "Start_lat", "Start_lon", "Bike number"]]
 
     # Convert all columns to numerical types
     X = X.apply(pd.to_numeric, errors="coerce")

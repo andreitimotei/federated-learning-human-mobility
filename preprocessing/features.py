@@ -3,8 +3,8 @@ import numpy as np
 import math
 
 def haversine(lat1, lon1, lat2, lon2): 
-    # Earth radius in kilometers 
-    R = 6371.0 
+    # Earth radius in meters 
+    R = 6378137.0 
     phi1 = math.radians(lat1) 
     phi2 = math.radians(lat2) 
     dphi = math.radians(lat2 - lat1) 
@@ -31,6 +31,7 @@ def engineer_features(input_csv, output_csv):
 
     # Compute trip duration in minutes if not already available
     df["Trip_duration_minutes"] = (df["End date"] - df["Start date"]).dt.total_seconds() / 60
+    df["Trip_duration_ms"] = df["Total duration (ms)"]
 
     # Convert dates to datetime objects
     df["Start_date"] = pd.to_datetime(df["Start date"]).astype(np.int64) // 10**9  # Convert to Unix timestamp in seconds
@@ -41,7 +42,7 @@ def engineer_features(input_csv, output_csv):
 
     # Compute trip distance if end station coordinates exist
     if "End_lat" in df.columns and "End_lon" in df.columns:
-        df["Trip_distance_km"] = df.apply(
+        df["Trip_distance_m"] = df.apply(
             lambda row: haversine(row["Start_lat"], row["Start_lon"], row["End_lat"], row["End_lon"]),
             axis=1
         )
@@ -57,19 +58,20 @@ def engineer_features(input_csv, output_csv):
         "Start station number", "Start station",
         "End station number", "End station",
         "Bike number", "Bike model",
-        "Trip_duration_minutes",
+        "Trip_duration_minutes", "Trip_duration_ms",
+        "Trip_distance_m",
         "Start_lat", "Start_lon"
     ]
 
     from sklearn.preprocessing import StandardScaler
 
-    feature_cols = ["Start_date", "End_date", "Start_hour", "Start_dayofweek", "End_hour", "End_dayofweek", "Start_lat", "Start_lon", "Trip_distance_km"]
+    feature_cols = ["Start_date", "End_date", "Start_hour", "Start_dayofweek", "End_hour", "End_dayofweek", "Start_lat", "Start_lon", "Trip_distance_m", "Trip_duration_ms"]
     scaler = StandardScaler()
     df[feature_cols] = scaler.fit_transform(df[feature_cols])
 
     # If available, include end station coordinates and trip distance
     if "End_lat" in df.columns and "End_lon" in df.columns:
-        cols_to_keep += ["End_lat", "End_lon", "Trip_distance_km"]
+        cols_to_keep += ["End_lat", "End_lon", "Trip_distance_m"]
     df = df[cols_to_keep]
 
     # Save the processed dataset

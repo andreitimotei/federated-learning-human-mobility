@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv("data/bike_features.csv")
 
 # Extract the trip durations
-durations = df["Trip_duration_minutes"]
+durations = df["Trip_duration_ms"]
 
 # Calculate the 99th percentile threshold for trip duration
 upper_threshold = durations.quantile(0.99)

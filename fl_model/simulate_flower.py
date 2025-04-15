@@ -56,7 +56,7 @@ if __name__ == "__main__":
     from flwr.server.strategy import FedOpt
 
     # Replace this with the actual structure of your model's weights
-    model = create_model_complex(input_shape=(8,))  # Adjust input shape as needed
+    model = create_model_complex(input_shape=(5,))  # Adjust input shape as needed
     initial_weights = model.get_weights()  # Get the actual weights from the model
     initial_parameters = ndarrays_to_parameters(initial_weights)
 

@@ -6,7 +6,7 @@ from flwr.common import Context
 from flwr.server.strategy import FedAvg  # Import the FedAvg strategy
 import numpy as np
 from flwr.common import ndarrays_to_parameters
-from model import create_model_complex
+from model import create_model_complex, create_transformer_model
 
 os.environ["RAY_memory_usage_threshold"] = "0.99"
 os.environ["RAY_memory_monitor_refresh_ms"] = "100"
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     from flwr.server.strategy import FedOpt
 
     # Replace this with the actual structure of your model's weights
-    model = create_model_complex(input_shape=(5,))  # Adjust input shape as needed
+    model = create_transformer_model(input_shape=(9,))  # Adjust input shape as needed
     initial_weights = model.get_weights()  # Get the actual weights from the model
     initial_parameters = ndarrays_to_parameters(initial_weights)
 

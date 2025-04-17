@@ -13,6 +13,7 @@ data/*.csv
 !data/stations_geolocated.csv
 !data/sample_bike_trips.csv
 data/clients/*
+data/clients_randomized/*
 !data/clients/client_1190.csv
 !data/clients/client_1219.csv
 

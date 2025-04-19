@@ -131,10 +131,16 @@ def create_transformer_model(input_shape):
     # Final output layer: predicts two values (latitude and longitude)
     outputs = layers.Dense(2, name="coords")(x)
 
+    lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+        initial_learning_rate=0.001,
+        decay_steps=10000,
+        decay_rate=0.9
+    )
+
     # Compile the model
     model = models.Model(inputs=inputs, outputs=outputs)
     model.compile(
-        optimizer=tf.keras.optimizers.AdamW(learning_rate=0.001),
+        optimizer=tf.keras.optimizers.AdamW(learning_rate=lr_schedule),
         loss=geodesic_loss,
         metrics=[geodesic_loss]
     )

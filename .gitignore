@@ -9,13 +9,13 @@ __pycache__/
 venv/
 
 # Data files (raw and generated)
-data/*.csv
-!data/stations_geolocated.csv
-!data/sample_bike_trips.csv
-data/clients/*
-data/clients_randomized/*
-!data/clients/client_1190.csv
-!data/clients/client_1219.csv
+old/data/*.csv
+!old/data/stations_geolocated.csv
+!old/data/sample_bike_trips.csv
+old/data/clients/*
+old/data/clients_randomized/*
+!old/data/clients/client_1190.csv
+!old/data/clients/client_1219.csv
 
 
 # Allow small client files only if needed

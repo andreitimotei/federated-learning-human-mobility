@@ -9,6 +9,7 @@ __pycache__/
 venv/
 
 # Data files (raw and generated)
+/old/*
 old/data/*.csv
 !old/data/stations_geolocated.csv
 !old/data/sample_bike_trips.csv
@@ -16,6 +17,9 @@ old/data/clients/*
 old/data/clients_randomized/*
 !old/data/clients/client_1190.csv
 !old/data/clients/client_1219.csv
+
+/new/raw-data/*
+/new/processed-data/*
 
 
 # Allow small client files only if needed

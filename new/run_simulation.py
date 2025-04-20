@@ -26,6 +26,7 @@ else:
 import glob
 import flwr as fl
 from torch.utils.data import DataLoader, random_split
+from flwr.common import Context  # Import Context
 
 # ─── CONFIGURATION ─────────────────────────────────────────────────────────────
 # Path to folder containing all preprocessed station CSVs
@@ -46,6 +47,22 @@ sys.path.append(PROJECT_ROOT)
 from client.client import StationClient, StationDataset  # adjust if your module path differs
 from model.model import FedMLPLSTM  # adjust if your module path differs
 
+class ClientManager:
+    def __init__(self, client_paths):
+        self.client_paths = client_paths
+
+    def get_client(self, cid: int) -> StationClient:
+        if cid < 0 or cid >= len(self.client_paths):
+            raise ValueError(f"Invalid client ID: {cid}. Must be in range [0, {len(self.client_paths) - 1}].")
+        csv_path = self.client_paths[cid]
+        ds = StationDataset(csv_path)
+        n_train = int(0.8 * len(ds))
+        n_val = len(ds) - n_train
+        train_ds, val_ds = random_split(ds, [n_train, n_val])
+        train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
+        val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE)
+        return StationClient(train_loader=train_loader, val_loader=val_loader, device=DEVICE)
+
 def main():
     # 1. Gather all station CSVs
     pattern = os.path.join(DATA_DIR, "station_*.csv")
@@ -55,6 +72,10 @@ def main():
         raise RuntimeError(f"No station CSVs found in {DATA_DIR}")
 
     print(f"Found {num_clients} clients. Sampling {CLIENTS_PER_ROUND} per round.")
+
+    # Initialize the client manager
+    global client_manager
+    client_manager = ClientManager(csv_paths)
 
     # 2. Define global validation DataLoader
     global_val_csv = "processed-data/global_validation.csv"  # Path to your global validation CSV
@@ -97,16 +118,10 @@ def main():
     )
 
     # 5. Define client factory for simulation
-    def client_fn(cid: str) -> fl.client.NumPyClient:
-        idx = int(cid)
-        csv_path = csv_paths[idx]
-        ds = StationDataset(csv_path)
-        n_train = int(0.8 * len(ds))
-        n_val = len(ds) - n_train
-        train_ds, val_ds = random_split(ds, [n_train, n_val])
-        train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
-        val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE)
-        return StationClient(train_loader=train_loader, val_loader=val_loader, device=DEVICE).to_client()
+    def client_fn(context: Context) -> fl.client.NumPyClient:
+        # Use the node_id from the context to determine the client index
+        cid = (context.node_id - 1) % len(csv_paths)  # Ensure cid is within range
+        return client_manager.get_client(cid).to_client()
 
     # 6. Start federated simulation
     history = fl.simulation.start_simulation(

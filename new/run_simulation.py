@@ -54,28 +54,51 @@ class ClientManager:
     def get_client(self, cid: int) -> StationClient:
         if cid < 0 or cid >= len(self.client_paths):
             raise ValueError(f"Invalid client ID: {cid}. Must be in range [0, {len(self.client_paths) - 1}].")
+        
         csv_path = self.client_paths[cid]
         ds = StationDataset(csv_path)
+        
+        # Check if the dataset is empty
+        if len(ds) == 0:
+            raise ValueError(f"Dataset for client {cid} is empty. Path: {csv_path}")
+        
         n_train = int(0.8 * len(ds))
         n_val = len(ds) - n_train
+        if n_train == 0 or n_val == 0:
+            raise ValueError(f"Insufficient data for splitting. Client {cid} has {len(ds)} rows. Path: {csv_path}")
+        
         train_ds, val_ds = random_split(ds, [n_train, n_val])
         train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
         val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE)
         return StationClient(train_loader=train_loader, val_loader=val_loader, device=DEVICE)
 
 def main():
-    # 1. Gather all station CSVs
+    # Gather all station CSVs
     pattern = os.path.join(DATA_DIR, "station_*.csv")
     csv_paths = sorted(glob.glob(pattern))
-    num_clients = len(csv_paths)
+    
+    # Filter out empty or small datasets
+    valid_csv_paths = []
+    for path in csv_paths:
+        ds = StationDataset(path)
+        if len(ds) > 1:  # Ensure at least 2 rows for splitting
+            valid_csv_paths.append(path)
+        else:
+            print(f"Skipping empty or small dataset: {path}")
+    
+    num_clients = len(valid_csv_paths)
     if num_clients == 0:
-        raise RuntimeError(f"No station CSVs found in {DATA_DIR}")
-
-    print(f"Found {num_clients} clients. Sampling {CLIENTS_PER_ROUND} per round.")
-
+        raise RuntimeError(f"No valid station CSVs found in {DATA_DIR}")
+    
+    print(f"Found {num_clients} valid clients. Sampling {CLIENTS_PER_ROUND} per round.")
+    
     # Initialize the client manager
     global client_manager
-    client_manager = ClientManager(csv_paths)
+    client_manager = ClientManager(valid_csv_paths)
+    
+    # Create a mapping from node_id to client index
+    global node_id_to_client_index
+    node_id_to_client_index = {node_id: idx for idx, node_id in enumerate(range(1, num_clients + 1))}
 
     # 2. Define global validation DataLoader
     global_val_csv = "processed-data/global_validation.csv"  # Path to your global validation CSV
@@ -119,8 +142,12 @@ def main():
 
     # 5. Define client factory for simulation
     def client_fn(context: Context) -> fl.client.NumPyClient:
-        # Use the node_id from the context to determine the client index
-        cid = (context.node_id - 1) % len(csv_paths)  # Ensure cid is within range
+        # Validate node_id
+        if context.node_id < 1:
+            raise ValueError(f"Invalid node_id: {context.node_id}. Must be greater than 0.")
+        
+        # Map node_id to client index using modulo
+        cid = (context.node_id - 1) % len(valid_csv_paths)
         return client_manager.get_client(cid).to_client()
 
     # 6. Start federated simulation

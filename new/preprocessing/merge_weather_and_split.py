@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import os
 import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats.mstats import winsorize
 
 # ─── CONFIG (no args!) ──────────────────────────────────────────────────────
 SCRIPT_DIR   = os.path.dirname(__file__)                   # new/preprocessing
@@ -131,9 +133,62 @@ def split_into_clients(full_df: pd.DataFrame, outdir: str):
         group.to_csv(path, index=False)
         print(f" • Wrote {fname} ({len(group)} rows)")
 
+
+def filter_percentiles(df, upper=0.99):
+    """
+    Filter outliers based on the specified percentiles.
+    Args:
+      df (pd.DataFrame): DataFrame to filter.
+      col (str): Column name to filter.
+      lower (float): Lower percentile threshold.
+      upper (float): Upper percentile threshold.
+    Returns:
+      pd.DataFrame: Filtered DataFrame.
+    """
+    upper_bound_departures = df['num_departures'].quantile(upper)
+    upper_bound_arrivals = df['num_arrivals'].quantile(upper)
+    print(f"Upper bound for departures: {upper_bound_departures}")
+    print(f"Upper bound for arrivals: {upper_bound_arrivals}")
+    return df[
+        (df['num_departures'] < upper_bound_departures) &
+        (df['num_arrivals'] < upper_bound_arrivals)
+    ]
+
+def find_top_values(df, n=10):
+    """
+    Find the top N rows with the highest values for num_departures and num_arrivals.
+    Args:
+        df (pd.DataFrame): DataFrame to analyze.
+        n (int): Number of top rows to retrieve.
+    Returns:
+        dict: DataFrames containing the top N rows for num_departures and num_arrivals.
+    """
+    top_departures = df.nlargest(n, 'num_departures')
+    top_arrivals = df.nlargest(n, 'num_arrivals')
+    
+    print(f"Top {n} rows with the highest departures:")
+    print(top_departures)
+    print(f"\nTop {n} rows with the highest arrivals:")
+    print(top_arrivals)
+    
+    return {"top_departures": top_departures, "top_arrivals": top_arrivals}
+
+def apply_winsorization(df, lower=0.01, upper=0.99):
+    df['num_departures'] = winsorize(df['num_departures'], limits=(lower, 1 - upper))
+    df['num_arrivals'] = winsorize(df['num_arrivals'], limits=(lower, 1 - upper))
+    return df
+
 if __name__ == "__main__":
     print("🔄 Building station‑hour feature tables …")
     full_df = aggregate_and_build_features(JOURNEYS_CSV, WEATHER_CSV)
+
+    find_top_values(full_df)
+
+    # Apply Winsorization
+    full_df = apply_winsorization(full_df)
+    print(f"Applied Winsorization: {len(full_df)} rows")
+
+    find_top_values(full_df)
 
     print(f"📂 Splitting into per‑station files in {OUTDIR!r} …")
     split_into_clients(full_df, OUTDIR)

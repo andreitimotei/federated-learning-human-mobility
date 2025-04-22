@@ -159,7 +159,7 @@ class StationClient(fl.client.NumPyClient):
                 total_loss += self.criterion(preds, y).item() * y.size(0)
 
         avg_loss = total_loss / len(self.val_loader.dataset)
-        print(f"[Client Evaluation] Average Loss: {avg_loss:.4f}")
+        # print(f"[Client Evaluation] Average Loss: {avg_loss:.4f}")
         return float(avg_loss), len(self.val_loader.dataset), {"mse": float(avg_loss)}
 
 # ======== Main Entrypoint ========

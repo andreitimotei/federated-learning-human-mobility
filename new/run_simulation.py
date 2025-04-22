@@ -37,7 +37,7 @@ CLIENTS_PER_ROUND = 10
 ROUNDS = 50
 # Local training hyperparameters
 BATCH_SIZE = 32
-LOCAL_EPOCHS = 1
+LOCAL_EPOCHS = 10
 LEARNING_RATE = 1e-3
 
 # ─── IMPORT YOUR CLIENT AND DATASET ─────────────────────────────────────────────

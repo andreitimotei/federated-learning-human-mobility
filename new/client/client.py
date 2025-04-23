@@ -83,7 +83,7 @@ class StationClient(fl.client.NumPyClient):
 
         self.train_loader = train_loader
         self.val_loader = val_loader
-        self.criterion = torch.nn.MSELoss()
+        self.criterion = torch.nn.L1Loss()
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=1e-3)
 
     def get_parameters(self, config=None):

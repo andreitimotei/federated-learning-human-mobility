@@ -126,7 +126,7 @@ def main():
                 lag_seq = lag_seq.to(DEVICE)
                 y = y.to(DEVICE)
                 preds = model(static_exog, lag_seq)
-                total_loss += torch.nn.MSELoss()(preds, y).item() * y.size(0)
+                total_loss += torch.nn.L1Loss()(preds, y).item() * y.size(0)
 
         avg_loss = total_loss / len(global_val_loader.dataset)
         print(f"[Global Evaluation] Round {server_round}, Average Loss: {avg_loss:.4f}")

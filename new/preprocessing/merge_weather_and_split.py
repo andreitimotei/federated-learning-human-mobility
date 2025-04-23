@@ -154,7 +154,7 @@ def filter_percentiles(df, upper=0.99):
         (df['num_arrivals'] < upper_bound_arrivals)
     ]
 
-def find_top_values(df, n=10):
+def find_top_values(df, n=50):
     """
     Find the top N rows with the highest values for num_departures and num_arrivals.
     Args:
@@ -163,8 +163,8 @@ def find_top_values(df, n=10):
     Returns:
         dict: DataFrames containing the top N rows for num_departures and num_arrivals.
     """
-    top_departures = df.nlargest(n, 'num_departures')
-    top_arrivals = df.nlargest(n, 'num_arrivals')
+    top_departures = df.nlargest(n, 'num_departures')[['datetime', 'terminal', 'num_departures', 'num_arrivals']]
+    top_arrivals = df.nlargest(n, 'num_arrivals')[['datetime', 'terminal', 'num_departures', 'num_arrivals']]
     
     print(f"Top {n} rows with the highest departures:")
     print(top_departures)
@@ -173,7 +173,7 @@ def find_top_values(df, n=10):
     
     return {"top_departures": top_departures, "top_arrivals": top_arrivals}
 
-def apply_winsorization(df, lower=0.01, upper=0.99):
+def apply_winsorization(df, lower=0, upper=0.999):
     df['num_departures'] = winsorize(df['num_departures'], limits=(lower, 1 - upper))
     df['num_arrivals'] = winsorize(df['num_arrivals'], limits=(lower, 1 - upper))
     return df
@@ -184,11 +184,11 @@ if __name__ == "__main__":
 
     find_top_values(full_df)
 
-    # Apply Winsorization
-    full_df = apply_winsorization(full_df)
-    print(f"Applied Winsorization: {len(full_df)} rows")
+    # # Apply Winsorization
+    # full_df = apply_winsorization(full_df)
+    # print(f"Applied Winsorization: {len(full_df)} rows")
 
-    find_top_values(full_df)
+    # find_top_values(full_df)
 
     print(f"📂 Splitting into per‑station files in {OUTDIR!r} …")
     split_into_clients(full_df, OUTDIR)

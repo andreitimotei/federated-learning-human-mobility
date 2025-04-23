@@ -34,9 +34,9 @@ DATA_DIR = "processed-data/clients"
 # How many clients to sample each round
 CLIENTS_PER_ROUND = 10
 # Total number of federated rounds
-ROUNDS = 50
+ROUNDS = 30
 # Local training hyperparameters
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 LOCAL_EPOCHS = 10
 LEARNING_RATE = 1e-3
 

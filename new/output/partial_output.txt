@@ -1,0 +1,77 @@
+Found 794 valid clients. Sampling 10 per round.
+WARNING :   DEPRECATED FEATURE: flwr.simulation.start_simulation() is deprecated.
+        Instead, use the `flwr run` CLI command to start a local simulation in your Flower app, as shown for example below:
+
+                $ flwr new  # Create a new Flower app from a template
+
+                $ flwr run  # Run the Flower app in Simulation Mode
+
+        Using `start_simulation()` is deprecated.
+
+            This is a deprecated feature. It will be removed
+            entirely in future versions of Flower.
+
+INFO :      Starting Flower simulation, config: num_rounds=15, no round_timeout
+2025-05-24 13:01:41,063 INFO worker.py:1771 -- Started a local Ray instance.
+INFO :      Flower VCE: Ray initialized with resources: {'accelerator_type:G': 1.0, 'node:__internal_head__': 1.0, 'CPU': 16.0, 'memory': 12813176832.0, 'object_store_memory': 6406588416.0, 'GPU': 1.0, 'node:192.168.52.78': 1.0}
+INFO :      Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+INFO :      Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 1}
+INFO :      Flower VCE: Creating VirtualClientEngineActorPool with 1 actors
+INFO :      [INIT]
+INFO :      Requesting initial parameters from one random client
+(pid=2914) 2025-05-24 13:01:43.205019: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+(pid=2914) 2025-05-24 13:01:43.227264: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+(pid=2914) WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+(pid=2914) E0000 00:00:1748088103.262540    2914 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+(pid=2914) E0000 00:00:1748088103.271902    2914 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+(pid=2914) W0000 00:00:1748088103.291041    2914 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+(pid=2914) W0000 00:00:1748088103.291078    2914 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+(pid=2914) W0000 00:00:1748088103.291082    2914 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+(pid=2914) W0000 00:00:1748088103.291084    2914 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+(pid=2914) 2025-05-24 13:01:43.299424: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+(pid=2914) To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+INFO :      Received initial parameters from one random client
+INFO :      Starting evaluation of initial global parameters
+[Global Evaluation] Round 0, Average Loss: 1.9690
+INFO :      initial parameters (loss, other metrics): 1.9689978210112942, {'loss': 1.9689978210112942}
+INFO :
+INFO :      [ROUND 1]
+INFO :      configure_fit: strategy sampled 10 clients (out of 794)
+INFO :      aggregate_fit: received 10 results and 0 failures
+WARNING :   No fit_metrics_aggregation_fn provided
+[Global Evaluation] Round 1, Average Loss: 1.4421
+INFO :      fit progress: (1, 1.4421477905019588, {'loss': 1.4421477905019588}, 19.833807707999995)
+INFO :      configure_evaluate: strategy sampled 794 clients (out of 794)
+INFO :      aggregate_evaluate: received 794 results and 0 failures
+WARNING :   No evaluate_metrics_aggregation_fn provided
+INFO :
+INFO :      [ROUND 2]
+INFO :      configure_fit: strategy sampled 10 clients (out of 794)
+INFO :      aggregate_fit: received 10 results and 0 failures
+[Global Evaluation] Round 2, Average Loss: 1.3681
+INFO :      fit progress: (2, 1.3680869754079101, {'loss': 1.3680869754079101}, 137.483308587)
+INFO :      configure_evaluate: strategy sampled 794 clients (out of 794)
+INFO :      aggregate_evaluate: received 794 results and 0 failures
+INFO :
+INFO :      [ROUND 3]
+INFO :      configure_fit: strategy sampled 10 clients (out of 794)
+INFO :      aggregate_fit: received 10 results and 0 failures
+[Global Evaluation] Round 3, Average Loss: 1.3100
+INFO :      fit progress: (3, 1.3100285057831456, {'loss': 1.3100285057831456}, 260.275468778)
+INFO :      configure_evaluate: strategy sampled 794 clients (out of 794)
+INFO :      aggregate_evaluate: received 794 results and 0 failures
+INFO :
+INFO :      [ROUND 4]
+INFO :      configure_fit: strategy sampled 10 clients (out of 794)
+INFO :      aggregate_fit: received 10 results and 0 failures
+[Global Evaluation] Round 4, Average Loss: 1.2797
+INFO :      fit progress: (4, 1.279692045932012, {'loss': 1.279692045932012}, 385.055883796)
+INFO :      configure_evaluate: strategy sampled 794 clients (out of 794)
+INFO :      aggregate_evaluate: received 794 results and 0 failures
+INFO :
+INFO :      [ROUND 5]
+INFO :      configure_fit: strategy sampled 10 clients (out of 794)
+INFO :      aggregate_fit: received 10 results and 0 failures
+[Global Evaluation] Round 5, Average Loss: 1.2615
+INFO :      fit progress: (5, 1.2615350570122585, {'loss': 1.2615350570122585}, 508.36553471699995)
+INFO :      configure_evaluate: strategy sampled 794 clients (out of 794)

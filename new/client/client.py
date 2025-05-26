@@ -8,6 +8,16 @@ from torch.utils.data import Dataset, DataLoader, random_split
 import flwr as fl
 import sys
 import os
+import logging
+import csv
+
+logging.basicConfig(
+    filename='fl_training.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+CSV_METRICS_FILE = "client_metrics.csv"
 
 # Add the project root to the Python path
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
@@ -20,27 +30,21 @@ class StationDataset(Dataset):
     def __init__(self, csv_path):
         df = pd.read_csv(csv_path)
 
-        # Convert datetime to Unix time
         if "datetime" in df.columns:
             df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce")
             df["datetime"] = df["datetime"].apply(lambda x: x.timestamp() if pd.notnull(x) else None)
 
-        # Drop rows with NaN values after conversion
         df = df.dropna()
 
-        # Check for NaN or Inf in the dataset
         if df.isnull().values.any():
             raise ValueError(f"Dataset {csv_path} contains NaN values")
         if not np.isfinite(df.values).all():
             raise ValueError(f"Dataset {csv_path} contains Inf values")
 
-        # Targets
         self.y = df[["num_arrivals", "num_departures"]].values.astype("float32")
-        
-        # Features
+
         static_exog_cols = [
-            "datetime",  # Include the converted datetime column
-            "hour", "day_of_week", "month", "is_weekend", "is_holiday",
+            "datetime", "hour", "day_of_week", "month", "is_weekend", "is_holiday",
             "lat", "lon", "nbDocks",
             "temperature", "precipitation", "humidity", "pressure",
         ]
@@ -50,7 +54,9 @@ class StationDataset(Dataset):
             "num_departures_lag1", "num_departures_lag2", "num_departures_lag3",
             "num_departures_lag24", "num_departures_lag168",
         ]
-        self.X_static_exog = df[static_exog_cols].values.astype("float32")
+        df["datetime"] = df["datetime"].astype("float64")  # ensure full precision
+        self.X_static_exog = df[static_exog_cols].astype("float32").values
+
         n_lags = len(lag_cols) // 2
         arr_lags = df[[c for c in lag_cols if "arrivals" in c]].values.reshape(-1, n_lags)
         dep_lags = df[[c for c in lag_cols if "departures" in c]].values.reshape(-1, n_lags)
@@ -64,15 +70,11 @@ class StationDataset(Dataset):
 
 # ======== Flower Client ========
 class StationClient(fl.client.NumPyClient):
-    def __init__(self, train_loader, val_loader, device="cpu"):
+    def __init__(self, train_loader, val_loader, device="gpu"):
         self.device = torch.device(device)
-
-        # Access the original dataset from the Subset object
         original_dataset = train_loader.dataset.dataset
-
-        # Adjust these dims if you change feature lists
         static_dim = original_dataset.X_static_exog.shape[1]
-        exog_dim = 0  # already included in static_exog_cols
+        exog_dim = 0
         lag_seq_len = original_dataset.X_lag_seq.shape[1]
 
         self.model = FedMLPLSTM(
@@ -87,10 +89,6 @@ class StationClient(fl.client.NumPyClient):
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=1e-3)
 
     def get_parameters(self, config=None):
-        """
-        Return the model parameters as a list of NumPy arrays.
-        The `config` argument is included to match Flower's expected signature.
-        """
         return [val.cpu().numpy() for _, val in self.model.state_dict().items()]
 
     def set_parameters(self, parameters):
@@ -99,19 +97,17 @@ class StationClient(fl.client.NumPyClient):
         self.model.load_state_dict(state_dict, strict=True)
 
     def fit(self, parameters, config):
-        # Load global weights
         self.set_parameters(parameters)
-        # Read hyperparams
         epochs = int(config.get("local_epochs", 1))
         batch_size = int(config.get("batch_size", 32))
         lr = float(config.get("lr", 1e-3))
         for g in self.optimizer.param_groups:
             g["lr"] = lr
-        
-        # Local training
+
         self.model.train()
-        for _ in range(epochs):
-            for (static_exog, lag_seq), y in self.train_loader:
+        for epoch in range(epochs):
+            epoch_loss = 0.0
+            for batch_idx, ((static_exog, lag_seq), y) in enumerate(self.train_loader):
                 static_exog = static_exog.to(self.device)
                 lag_seq = lag_seq.to(self.device)
                 y = y.to(self.device)
@@ -120,14 +116,23 @@ class StationClient(fl.client.NumPyClient):
                 preds = self.model(static_exog, lag_seq)
                 loss = self.criterion(preds, y)
                 loss.backward()
+                epoch_loss += loss.item() * y.size(0)
+
+                if epoch == 0 and batch_idx == 0:
+                    logging.info(f"[Client Debug] Example prediction vs target: {preds[0].detach().cpu().numpy()} vs {y[0].detach().cpu().numpy()}")
 
                 for p in self.model.parameters():
-                    if p.grad is not None:
-                        if torch.isnan(p.grad).any() or torch.isinf(p.grad).any():
-                            print("NaN or Inf detected in gradients")
+                    if p.grad is not None and (torch.isnan(p.grad).any() or torch.isinf(p.grad).any()):
+                        logging.warning("NaN or Inf detected in gradients")
 
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
                 self.optimizer.step()
+
+            avg_loss = epoch_loss / len(self.train_loader.dataset)
+            logging.info(f"[Client Training] Epoch {epoch+1}/{epochs} | Avg Loss: {avg_loss:.4f}")
+            with open(CSV_METRICS_FILE, mode='a', newline='') as f:
+                csv_writer = csv.writer(f)
+                csv_writer.writerow(["train", epoch + 1, avg_loss])
 
         return self.get_parameters(), len(self.train_loader.dataset), {}
 
@@ -137,29 +142,30 @@ class StationClient(fl.client.NumPyClient):
         total_loss = 0.0
         with torch.no_grad():
             for (static_exog, lag_seq), y in self.val_loader:
-                # Check for NaN or Inf in the input data
                 if torch.isnan(static_exog).any() or torch.isinf(static_exog).any():
-                    print("NaN or Inf detected in static_exog")
+                    logging.warning("NaN or Inf detected in static_exog")
                 if torch.isnan(lag_seq).any() or torch.isinf(lag_seq).any():
-                    print("NaN or Inf detected in lag_seq")
+                    logging.warning("NaN or Inf detected in lag_seq")
                 if torch.isnan(y).any() or torch.isinf(y).any():
-                    print("NaN or Inf detected in targets (y)")
+                    logging.warning("NaN or Inf detected in targets (y)")
 
                 static_exog = static_exog.to(self.device)
                 lag_seq = lag_seq.to(self.device)
                 y = y.to(self.device)
                 preds = self.model(static_exog, lag_seq)
 
-                # Check for NaN or Inf in predictions
                 if torch.isnan(preds).any() or torch.isinf(preds).any():
-                    print("NaN or Inf detected in predictions")
+                    logging.warning("NaN or Inf detected in predictions")
 
                 preds = torch.clamp(preds, min=-1e6, max=1e6)
-
                 total_loss += self.criterion(preds, y).item() * y.size(0)
 
         avg_loss = total_loss / len(self.val_loader.dataset)
-        # print(f"[Client Evaluation] Average Loss: {avg_loss:.4f}")
+        logging.info(f"[Client Evaluation] Validation MAE: {avg_loss:.4f}")
+        with open(CSV_METRICS_FILE, mode='a', newline='') as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerow(["val", 0, avg_loss])
+
         return float(avg_loss), len(self.val_loader.dataset), {"mse": float(avg_loss)}
 
 # ======== Main Entrypoint ========
@@ -172,16 +178,20 @@ def main():
     parser.add_argument("--local_epochs", type=int, default=1)
     args = parser.parse_args()
 
-    # Load dataset
     ds = StationDataset(args.csv)
-    # 80/20 split
     n_train = int(0.8 * len(ds))
     n_val = len(ds) - n_train
     train_ds, val_ds = random_split(ds, [n_train, n_val])
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size)
 
-    # Start federated client
+    logging.info(f"[Client Init] Starting client for dataset: {args.csv} with {len(ds)} samples")
+
+    if not os.path.exists(CSV_METRICS_FILE):
+        with open(CSV_METRICS_FILE, mode='w', newline='') as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerow(["phase", "epoch", "loss"])
+
     client = StationClient(train_loader, val_loader, device=args.device)
     fl.client.start_numpy_client(
         server_address=args.server_address,
@@ -191,4 +201,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

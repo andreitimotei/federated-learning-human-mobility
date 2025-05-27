@@ -35,6 +35,7 @@ def predict_for_day(model, dataset, target_date, device):
     timestamps, preds, trues = [], [], []
     for i in range(len(dataset)):
         (static_exog, lag_seq), y = dataset[i]
+        print(f"{dataset.X_static_exog[i][0]} {dataset.X_lag_seq[i][0]} {y}")
         dt = pd.to_datetime(dataset.X_static_exog[i][0] * 1000000000, unit="s")
         target_dt = pd.to_datetime(target_date).date()
         if dt.date() != target_dt:

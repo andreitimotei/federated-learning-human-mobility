@@ -24,7 +24,7 @@ print(f"Using device: {DEVICE}")
 
 DATA_DIR = "processed-data/clients"
 CLIENTS_PER_ROUND = 10
-ROUNDS = 15
+ROUNDS = 25
 BATCH_SIZE = 64
 LOCAL_EPOCHS = 10
 LEARNING_RATE = 1e-3
@@ -76,14 +76,14 @@ def main():
             writer.writerow(["round", "global_mae"])
 
     def save_final_model(parameters, save_path="final_model.pt"):
-        model = FedMLPLSTM(16, 0, 5).to(DEVICE)
+        model = FedMLPLSTM(17, 0, 5).to(DEVICE)
         state_dict = {k: torch.tensor(v).to(DEVICE) for k, v in zip(model.state_dict().keys(), parameters)}
         model.load_state_dict(state_dict)
         torch.save(model.state_dict(), save_path)
         logging.info(f"[Model Saved] Final global model saved to {save_path}")
 
     def evaluate_global_model(server_round, parameters, config):
-        static_dim, exog_dim, lag_seq_len = 16, 0, 5
+        static_dim, exog_dim, lag_seq_len = 17, 0, 5
         model = FedMLPLSTM(static_dim, exog_dim, lag_seq_len).to(DEVICE)
         state_dict = {k: torch.tensor(v).to(DEVICE) for k, v in zip(model.state_dict().keys(), parameters)}
         model.load_state_dict(state_dict)

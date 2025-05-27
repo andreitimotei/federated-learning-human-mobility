@@ -117,8 +117,8 @@ def batch_evaluate(model_path, csv_dir, mae_threshold=1.0, device="cuda"):
 
             for day in all_dates:
                 mae, preds, trues = evaluate_day(model, dataset, day, device)
+                print(f"[EVALUATED] {station_id} on {day}: MAE = {mae}")
                 if mae is not None and mae < mae_threshold:
-                    print(f"[EVALUATED] {station_id} on {day}: MAE = {mae}")
                     plot_predictions(preds, trues, station_id, day)
         except Exception as e:
             print(f"[ERROR] Failed on {file}: {e}")
@@ -127,6 +127,6 @@ if __name__ == "__main__":
     batch_evaluate(
         model_path="global_models/global_model_round_15.pt",
         csv_dir="processed-data/clients",
-        mae_threshold=0.2,
+        mae_threshold=0.4,
         device="cuda"
     )

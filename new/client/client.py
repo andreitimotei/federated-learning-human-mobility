@@ -43,7 +43,7 @@ class StationDataset(Dataset):
 
         self.y = df[["num_arrivals", "num_departures"]].values.astype("float32")
 
-        static_exog_cols = [
+        static_exog_cols = [ "datetime",
             "hour", "day_of_week", "month", "is_weekend", "is_holiday",
             "lat", "lon", "nbDocks",
             "temperature", "precipitation", "humidity", "pressure",

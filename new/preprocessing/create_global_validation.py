@@ -9,6 +9,11 @@ GLOBAL_VAL_PATH = "processed-data/global_validation.csv"
 # Fraction of data to reserve for global validation
 GLOBAL_VAL_FRACTION = 0.1
 
+REQUIRED_COLUMNS = [
+    "is_arrival_spike", "is_departure_spike",
+    "rolling_arrivals_3h", "rolling_departures_3h"
+]
+
 def create_global_validation():
     global_val_data = []
 
@@ -21,12 +26,15 @@ def create_global_validation():
             # Load client dataset
             df = pd.read_csv(file_path)
 
-            # Handle NaN values in the client dataset
-            df = df.dropna()  # Drop rows with NaN values
-            # Alternatively, fill NaN values with a default value
-            # df = df.fillna(0)
+            # Add missing engineered features with default values
+            for col in REQUIRED_COLUMNS:
+                if col not in df.columns:
+                    print(f"[WARN] {col} missing in {file_name}, filling with 0.")
+                    df[col] = 0
 
-            # Skip datasets with fewer than 2 rows
+            # Handle NaN values in the client dataset
+            df = df.dropna()
+
             if len(df) < 2:
                 print(f"Skipping {file_name} (not enough rows to split).")
                 continue
@@ -43,30 +51,22 @@ def create_global_validation():
     # Combine all reserved validation data into a single DataFrame
     if global_val_data:
         global_val_df = pd.concat(global_val_data, ignore_index=True)
-
-        # Save the global validation dataset
         global_val_df.to_csv(GLOBAL_VAL_PATH, index=False)
         print(f"Global validation dataset saved to {GLOBAL_VAL_PATH}")
     else:
         print("No global validation data created (no valid rows found).")
 
 def clean_global_validation():
-    # Load the dataset
     df = pd.read_csv(GLOBAL_VAL_PATH)
 
-    # Convert date_time to Unix time
     if "datetime" in df.columns:
         df["datetime"] = pd.to_datetime(df["datetime"], errors="coerce")
         df["datetime"] = df["datetime"].apply(lambda x: x.timestamp() if pd.notnull(x) else None)
 
-    # Drop the station_name column
     if "station_name" in df.columns:
         df = df.drop(columns=["station_name"])
 
-    # Drop rows with NaN values
     df = df.dropna()
-
-    # Save the cleaned dataset
     df.to_csv(GLOBAL_VAL_PATH, index=False)
     print(f"Cleaned dataset saved to {GLOBAL_VAL_PATH}")
 

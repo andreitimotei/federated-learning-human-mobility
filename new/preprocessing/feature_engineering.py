@@ -45,6 +45,16 @@ def preprocess_station(file_path, holiday_list=None):
     # Fill missing counts with zero
     count_cols = ['num_departures', 'num_arrivals']
     df[count_cols] = df[count_cols].fillna(0)
+
+    # Mark spike hours
+    df["is_arrival_spike"] = (df["num_arrivals"] > df["num_arrivals"].quantile(0.95)).astype(int)
+    df["is_departure_spike"] = (df["num_departures"] > df["num_departures"].quantile(0.95)).astype(int)
+
+
+    df["rolling_arrivals_3h"] = df["num_arrivals"].rolling(3).sum()
+    df["rolling_departures_3h"] = df["num_departures"].rolling(3).sum()
+    df[["rolling_arrivals_3h", "rolling_departures_3h"]] = df[["rolling_arrivals_3h", "rolling_departures_3h"]].fillna(0)
+
     
     # Temporal features
     df['hour'] = df.index.hour

@@ -9,6 +9,8 @@ from torch.utils.data import DataLoader, random_split
 from flwr.common import Context
 import logging
 import csv
+import random
+import pandas as pd
 
 logging.basicConfig(
     filename="simulation.log",
@@ -24,7 +26,7 @@ print(f"Using device: {DEVICE}")
 
 DATA_DIR = "processed-data/clients"
 CLIENTS_PER_ROUND = 10
-ROUNDS = 15
+ROUNDS = 25
 BATCH_SIZE = 64
 LOCAL_EPOCHS = 10
 LEARNING_RATE = 1e-3
@@ -55,15 +57,20 @@ class ClientManager:
 def main():
     pattern = os.path.join(DATA_DIR, "station_*.csv")
     csv_paths = sorted(glob.glob(pattern))
-    valid_csv_paths = [p for p in csv_paths if len(StationDataset(p)) > 1]
-    num_clients = len(valid_csv_paths)
-    print(f"Found {num_clients} valid clients.")
 
-    global client_manager
-    client_manager = ClientManager(valid_csv_paths)
+    # Calculate total traffic and sort clients by traffic
+    traffic_scores = []
+    for path in csv_paths:
+        try:
+            df = pd.read_csv(path)
+            score = df["num_arrivals"].sum() + df["num_departures"].sum()
+            traffic_scores.append((path, score))
+        except Exception as e:
+            print(f"Skipping {path}: {e}")
 
-    global node_id_to_client_index
-    node_id_to_client_index = {node_id: idx for idx, node_id in enumerate(range(1, num_clients + 1))}
+    traffic_scores.sort(key=lambda x: x[1], reverse=True)
+    top_50_paths = [p for p, _ in traffic_scores[:200] if len(StationDataset(p)) > 1]
+    print(f"Using top {len(top_50_paths)} clients for round rotation.")
 
     global_val_csv = "processed-data/global_validation.csv"
     global global_val_loader
@@ -76,14 +83,14 @@ def main():
             writer.writerow(["round", "global_mae"])
 
     def save_final_model(parameters, save_path="final_model.pt"):
-        model = FedMLPLSTM(16, 0, 5).to(DEVICE)
+        model = FedMLPLSTM(13, 0, 5).to(DEVICE)
         state_dict = {k: torch.tensor(v).to(DEVICE) for k, v in zip(model.state_dict().keys(), parameters)}
         model.load_state_dict(state_dict)
         torch.save(model.state_dict(), save_path)
         logging.info(f"[Model Saved] Final global model saved to {save_path}")
 
     def evaluate_global_model(server_round, parameters, config):
-        static_dim, exog_dim, lag_seq_len = 16, 0, 5
+        static_dim, exog_dim, lag_seq_len = 13, 0, 5
         model = FedMLPLSTM(static_dim, exog_dim, lag_seq_len).to(DEVICE)
         state_dict = {k: torch.tensor(v).to(DEVICE) for k, v in zip(model.state_dict().keys(), parameters)}
         model.load_state_dict(state_dict)
@@ -103,28 +110,41 @@ def main():
         save_final_model(parameters, save_path=f"global_models/global_model_round_{server_round}.pt")
         return avg_loss, {"loss": avg_loss}
 
-    strategy = fl.server.strategy.FedAvg(
-        fraction_fit=CLIENTS_PER_ROUND / num_clients,
-        min_fit_clients=CLIENTS_PER_ROUND,
-        min_available_clients=num_clients,
-        evaluate_fn=evaluate_global_model
-    )
+    class RotatingClientManager:
+        def __init__(self, all_paths):
+            self.all_paths = all_paths
+            self.round = 0
+
+        def get_round_clients(self, round_num):
+            random.seed(round_num)
+            selected = random.sample(self.all_paths, CLIENTS_PER_ROUND)
+            return ClientManager(selected)
+
+    rotator = RotatingClientManager(top_50_paths)
+    current_round = {"num": 0}
 
     def client_fn(context: Context) -> fl.client.NumPyClient:
-        cid = (context.node_id - 1) % len(valid_csv_paths)
+        round_num = current_round["num"]
+        global client_manager
+        client_manager = rotator.get_round_clients(round_num)
+        cid = (context.node_id - 1) % CLIENTS_PER_ROUND
         return client_manager.get_client(cid).to_client()
 
     history = fl.simulation.start_simulation(
         client_fn=client_fn,
-        num_clients=num_clients,
+        num_clients=CLIENTS_PER_ROUND,
         config=fl.server.ServerConfig(num_rounds=ROUNDS),
-        strategy=strategy,
+        strategy=fl.server.strategy.FedAvg(
+            fraction_fit=1.0,
+            min_fit_clients=CLIENTS_PER_ROUND,
+            min_available_clients=CLIENTS_PER_ROUND,
+            evaluate_fn=evaluate_global_model
+        ),
         client_resources={"num_cpus": 1, "num_gpus": 1},
     )
 
     print("Simulation complete!")
     print(f"Final metrics: {history.metrics_centralized}")
-
 
 if __name__ == "__main__":
     main()

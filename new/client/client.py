@@ -44,9 +44,11 @@ class StationDataset(Dataset):
         self.y = df[["num_arrivals", "num_departures"]].values.astype("float32")
 
         static_exog_cols = [
-            "datetime", "hour", "day_of_week", "month", "is_weekend", "is_holiday",
+            "hour", "day_of_week", "month", "is_weekend", "is_holiday",
             "lat", "lon", "nbDocks",
             "temperature", "precipitation", "humidity", "pressure",
+            "is_arrival_spike", "is_departure_spike",
+            "rolling_arrivals_3h", "rolling_departures_3h"
         ]
         lag_cols = [
             "num_arrivals_lag1", "num_arrivals_lag2", "num_arrivals_lag3",
@@ -85,7 +87,13 @@ class StationClient(fl.client.NumPyClient):
 
         self.train_loader = train_loader
         self.val_loader = val_loader
-        self.criterion = torch.nn.L1Loss()
+
+        def weighted_mae(preds, targets, threshold=5.0, weight_high=3.0):
+            weight = torch.where((targets > threshold), weight_high, 1.0)
+            return torch.mean(weight * torch.abs(preds - targets))
+
+        self.criterion = lambda preds, targets: weighted_mae(preds, targets)
+
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=1e-3)
 
     def get_parameters(self, config=None):

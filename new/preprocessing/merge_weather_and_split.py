@@ -128,6 +128,8 @@ def aggregate_and_build_features(journeys_csv: str,
 def split_into_clients(full_df: pd.DataFrame, outdir: str):
     os.makedirs(outdir, exist_ok=True)
     for term, group in full_df.groupby('terminal'):
+        # Sort by datetime before saving
+        group = group.sort_values("datetime")
         fname = f"station_{int(term):04d}.csv"
         path  = os.path.join(outdir, fname)
         group.to_csv(path, index=False)

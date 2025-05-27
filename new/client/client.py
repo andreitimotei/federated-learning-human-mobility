@@ -88,7 +88,7 @@ class StationClient(fl.client.NumPyClient):
         self.train_loader = train_loader
         self.val_loader = val_loader
 
-        def weighted_mae(preds, targets, threshold=5.0, weight_high=3.0):
+        def weighted_mae(preds, targets, threshold=10.0, weight_high=5.0):
             weight = torch.where((targets > threshold), weight_high, 1.0)
             return torch.mean(weight * torch.abs(preds - targets))
 

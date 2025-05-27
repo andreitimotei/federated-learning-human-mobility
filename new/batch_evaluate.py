@@ -1,7 +1,7 @@
 # batch_evaluate_and_plot.py
 
 import matplotlib
-matplotlib.use("Agg")  # Add this line at the very top, before importing pyplot
+matplotlib.use("Agg")
 
 import os
 import torch
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from model.model import FedMLPLSTM
 from client.client import StationDataset
-
+import xml.etree.ElementTree as ET
 
 def load_model(model_path, static_dim, lag_seq_len, device):
     model = FedMLPLSTM(static_dim=static_dim, exog_dim=0, lag_seq_len=lag_seq_len)
@@ -20,44 +20,89 @@ def load_model(model_path, static_dim, lag_seq_len, device):
     return model
 
 def evaluate_day(model, dataset, date, device):
-    timestamps, preds, trues = [], [], []
+    timestamps, preds, trues, hours = [], [], [], []
     date = pd.to_datetime(date).date()
+    found_any = False
     for i in range(len(dataset)):
         (static_exog, lag_seq), y = dataset[i]
-        dt = pd.to_datetime(dataset.X_static_exog[i][0] * 1000000000, unit="s", errors="coerce").date()
-        if dt != date:
+        dt = pd.to_datetime(dataset.X_static_exog[i][0] * 1000000000, unit="s", errors="coerce")
+        if dt.date() != date:
             continue
+        found_any = True
+        hour = dt.hour
         with torch.no_grad():
             static_exog = torch.tensor(static_exog).unsqueeze(0).to(device)
             lag_seq = torch.tensor(lag_seq).unsqueeze(0).to(device)
             y_tensor = torch.tensor(y).unsqueeze(0).to(device)
             pred = model(static_exog, lag_seq).squeeze().cpu().numpy()
-            # pred = np.round(pred).astype(int)  # <-- Add this line to round predictions
+            pred = np.round(pred).astype(int)
+            pred = np.clip(pred, 0, None)
             actual = y_tensor.squeeze().cpu().numpy()
         timestamps.append(dt)
+        hours.append(hour)
         preds.append(pred)
         trues.append(actual)
 
+    if not found_any:
+        print(f"[DEBUG] No data found for {date} in this station!")
     if not preds:
         return None, None, None
 
     mae = sum(abs(p - t).mean() for p, t in zip(preds, trues)) / len(preds)
-    return mae, preds, trues
+    return mae, list(zip(hours, preds)), list(zip(hours, trues))
+
+def load_station_names(xml_path):
+    tree = ET.parse(xml_path)
+    root = tree.getroot()
+    terminal_to_name = {}
+    for st in root.findall('station'):
+        terminal = st.find('terminalName').text
+        name = st.find('name').text
+        terminal_to_name[terminal] = name
+    return terminal_to_name
+
+STATION_XML = "raw-data/stations.xml"
+TERMINAL_TO_NAME = load_station_names(STATION_XML)
+
+def get_station_name_from_id(station_id):
+    if isinstance(station_id, str) and station_id.startswith("station_"):
+        terminal = station_id.split("_")[1]
+    else:
+        terminal = str(station_id)
+    # Pad to 6 digits for terminalName lookup
+    terminal_padded = terminal.zfill(6)
+    return TERMINAL_TO_NAME.get(terminal_padded, "Unknown")
 
 def plot_predictions(preds, trues, station_id, date):
-    pred_arr, pred_dep = zip(*preds)
-    true_arr, true_dep = zip(*trues)
-    n = len(pred_arr)
-    hours = list(range(n))  # X axis: hour indices
+    import matplotlib.ticker as ticker
 
-    # Save only if at least one interval has demand > 5
+    station_name = get_station_name_from_id(station_id)
+
+    # Initialize 24-hour zero arrays
+    pred_arr, pred_dep = [0]*24, [0]*24
+    true_arr, true_dep = [0]*24, [0]*24
+
+    for hour, (a, d) in preds:
+        pred_arr[hour] = a
+        pred_dep[hour] = d
+    for hour, (a, d) in trues:
+        true_arr[hour] = a
+        true_dep[hour] = d
+
     if not (
-        any(x > 5 for x in pred_arr) or
-        any(x > 5 for x in pred_dep) or
-        any(x > 5 for x in true_arr) or
-        any(x > 5 for x in true_dep)
+        any(x > 10 for x in pred_arr) or
+        any(x > 10 for x in pred_dep) or
+        any(x > 10 for x in true_arr) or
+        any(x > 10 for x in true_dep)
     ):
-        return  # Skip saving this plot
+        return
+
+    hours = list(range(24))
+    hour_labels = [f"{h:02d}:00" if h % 3 == 0 else "" for h in hours]
+
+    all_vals = pred_arr + pred_dep + true_arr + true_dep
+    max_val = max(all_vals)
+    ylim = 60 if max_val > 40 else 40 if max_val > 20 else 20
 
     plt.figure(figsize=(14, 6))
     plt.subplot(1, 2, 1)
@@ -66,7 +111,8 @@ def plot_predictions(preds, trues, station_id, date):
     plt.legend()
     plt.title("Arrivals")
     plt.xlabel("Hour of Day")
-    plt.xticks(hours if n <= 24 else range(0, n, max(1, n // 12)))  # reasonable ticks
+    plt.xticks(hours, hour_labels, rotation=45)
+    plt.ylim(0, ylim)
 
     plt.subplot(1, 2, 2)
     plt.plot(hours, true_dep, label="True Departures")
@@ -74,10 +120,12 @@ def plot_predictions(preds, trues, station_id, date):
     plt.legend()
     plt.title("Departures")
     plt.xlabel("Hour of Day")
-    plt.xticks(hours if n <= 24 else range(0, n, max(1, n // 12)))
+    plt.xticks(hours, hour_labels, rotation=45)
+    plt.ylim(0, ylim)
 
-    plt.suptitle(f"Station {station_id} | {date}")
-    fname = f"prediction_plot/accurate_plot_{station_id}_{date}.png"
+    plt.suptitle(f"Station {station_name} | {date}")
+    fname = f"prediction_plot_2/accurate_plot_{station_id}_{date}.png"
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
     plt.savefig(fname)
     plt.close()
     print(f"[SAVED] {fname}")
@@ -89,14 +137,9 @@ def get_all_dates_from_csvs(csv_dir):
             path = os.path.join(csv_dir, file)
             try:
                 df = pd.read_csv(path, usecols=["datetime"])
-                # If datetime is already a UNIX timestamp, use unit="s"
                 df["datetime"] = pd.to_datetime(df["datetime"], unit="s", errors="coerce")
                 df = df.dropna(subset=["datetime"])
                 unique_dates = df["datetime"].dt.date.unique()
-                for d in unique_dates:
-                    dt = pd.Timestamp(d)
-                    unix_time = int(dt.timestamp())
-                    # print(f"Date: {d} -> UNIX time: {unix_time}")
                 all_dates.update(unique_dates)
             except Exception as e:
                 print(f"Skipped {file}: {e}")
@@ -104,9 +147,20 @@ def get_all_dates_from_csvs(csv_dir):
 
 def batch_evaluate(model_path, csv_dir, mae_threshold=1.0, device="cuda"):
     all_dates = get_all_dates_from_csvs(csv_dir)
+    traffic_scores = []
     for file in os.listdir(csv_dir):
-        if not file.endswith(".csv"):
-            continue
+        if file.endswith(".csv"):
+            path = os.path.join(csv_dir, file)
+            try:
+                df = pd.read_csv(path, usecols=["num_arrivals", "num_departures"])
+                score = df["num_arrivals"].sum() + df["num_departures"].sum()
+                traffic_scores.append((file, score))
+            except Exception as e:
+                print(f"Skipped {file} for traffic scoring: {e}")
+
+    sorted_files = [f for f, _ in sorted(traffic_scores, key=lambda x: x[1], reverse=True)]
+
+    for file in sorted_files:
         station_path = os.path.join(csv_dir, file)
         station_id = os.path.splitext(file)[0]
         try:
@@ -125,8 +179,8 @@ def batch_evaluate(model_path, csv_dir, mae_threshold=1.0, device="cuda"):
 
 if __name__ == "__main__":
     batch_evaluate(
-        model_path="global_models/global_model_round_15.pt",
+        model_path="global_models/global_model_round_25.pt",
         csv_dir="processed-data/clients",
-        mae_threshold=0.4,
+        mae_threshold=1.0,
         device="cuda"
     )

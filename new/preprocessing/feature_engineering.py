@@ -21,6 +21,7 @@ def preprocess_station(file_path, holiday_list=None):
     """
     # Load and index
     df = pd.read_csv(file_path, parse_dates=['datetime'])
+    # Sort by datetime right after loading
     df = df.sort_values('datetime').set_index('datetime')
     
     # Ensure continuous hourly index

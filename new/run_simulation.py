@@ -24,7 +24,7 @@ print(f"Using device: {DEVICE}")
 
 DATA_DIR = "processed-data/clients"
 CLIENTS_PER_ROUND = 10
-ROUNDS = 25
+ROUNDS = 30
 BATCH_SIZE = 64
 LOCAL_EPOCHS = 10
 LEARNING_RATE = 1e-3
